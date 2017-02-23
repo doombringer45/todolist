@@ -1,17 +1,38 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
-    <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-    <p>
-      For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
-    </p>
+<ion-view view-title="To do List" hide-nav-bar="true">
+<div class="bar bar-header">
+  <button class="button" ng-click="clear()">Clear</button>
+  <h1 class="title">To Do List</h1>
+  <button class="button" ng-click="openModal()"><i class="ion-edit" ></i></button>
+</div>
+  <ion-content >
+    <div style="padding-top:72px">
+    <ion-list ng-repeat="i in items track by $index ">
+        <ion-checkbox >{{i}}</ion-checkbox>
+    </ion-list>
+    </div>
   </ion-content>
+
+  <script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">My Modal title</h1>
+      <button class="button" ng-click="closeModal()">cancel</button>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Task</span>
+            <input type="text" placeholder="What you gonna do?" ng-model="taskItem.item">
+          </label>
+
+          <button class="button button-full button-positive" style="margin-top: 75px" ng-click="saveItem(taskItem.item)"> SAVE </button>
+        </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
 </ion-view>
+
+
+
